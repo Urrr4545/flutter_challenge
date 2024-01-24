@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'challenge_menu.dart';
+import 'package:flutter_challenge/challenge_menu.dart';
 
 void main() {
   runApp(const MyApp());
