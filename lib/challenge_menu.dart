@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_challenge/challenge_day_4/normal/main.dart';
 
 import 'challenge_day_0/hard/main.dart';
 import 'challenge_day_0/normal/main.dart';
@@ -8,6 +9,7 @@ import 'challenge_day_2/hard/main.dart';
 import 'challenge_day_2/normal/main.dart';
 import 'challenge_day_3/hard/main.dart';
 import 'challenge_day_3/normal/main.dart';
+import 'challenge_day_4/hard/main.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -113,6 +115,28 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () =>
                       goScreen(context, const ChallengeHardScreenDay3()),
                   child: const Text("3일차 심화"),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () =>
+                      goScreen(context, const ChallengeNormalScreenDay4()),
+                  child: const Text("4일차 기본"),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () =>
+                      goScreen(context, const ChallengeHardScreenDay4()),
+                  child: const Text("4일차 심화"),
                 ),
               ],
             ),
