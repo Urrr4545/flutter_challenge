@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/challenge_day_0/hard/main.dart';
-import 'package:flutter_challenge/challenge_day_0/normal/main.dart';
 
+import 'challenge_day_0/hard/main.dart';
+import 'challenge_day_0/normal/main.dart';
+import 'challenge_day_1/hard/main.dart';
+import 'challenge_day_1/normal/main.dart';
+import 'challenge_day_2/hard/main.dart';
+import 'challenge_day_2/normal/main.dart';
 import 'challenge_day_3/hard/main.dart';
 import 'challenge_day_3/normal/main.dart';
-import 'challnege_day_1/hard/main.dart';
-import 'challnege_day_1/normal/main.dart';
-import 'challnege_day_2/hard/main.dart';
-import 'challnege_day_2/normal/main.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
