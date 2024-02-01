@@ -18,6 +18,8 @@ import 'challenge_day_6/hard/main.dart';
 import 'challenge_day_6/normal/main.dart';
 import 'challenge_day_7/hard/main.dart';
 import 'challenge_day_7/normal/main.dart';
+import 'challenge_day_9/hard/main.dart';
+import 'challenge_day_9/normal/main.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -234,6 +236,28 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () =>
                         goScreen(context, const ChallengeHardScreenDay8()),
                     child: const Text("8일차 심화"),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () =>
+                        goScreen(context, const ChallengeNormalScreenDay9()),
+                    child: const Text("9일차 기본"),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () =>
+                        goScreen(context, const ChallengeHardScreenDay9()),
+                    child: const Text("9일차 심화"),
                   ),
                 ],
               ),
