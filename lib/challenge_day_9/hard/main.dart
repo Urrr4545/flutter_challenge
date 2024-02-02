@@ -19,10 +19,19 @@ class _ChallengeHardScreenDay9State extends State<ChallengeHardScreenDay9> {
           title: const Text("Swipe left and right"),
           centerTitle: true,
         ),
-        body: DraggableCardWidget(),
+        body: const DraggableCardWidget(),
       ),
     );
   }
+}
+
+enum AngleType {
+  Idle(0),
+  BottomStart(30),
+  TopStart(-30);
+
+  final double angle;
+  const AngleType(this.angle);
 }
 
 class DraggableCardWidget extends StatefulWidget {
@@ -37,6 +46,7 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
   bool isDragging = false;
   late Size screenSize;
   double angle = 0;
+  AngleType angleType = AngleType.Idle;
 
   @override
   void initState() {
@@ -72,8 +82,13 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
           setState(() {
             isDragging = true;
             cardPosition += detail.delta;
-            var angle =
-                detail.globalPosition.dy > screenSize.height / 2 ? -30 : 30;
+
+            if (angleType == AngleType.Idle) {
+              angleType = detail.globalPosition.dy > screenSize.height / 2
+                  ? AngleType.BottomStart
+                  : AngleType.TopStart;
+            }
+            var angle = angleType.angle;
             this.angle = angle * cardPosition.dx / screenSize.width;
           });
         },
@@ -81,7 +96,8 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
           setState(() {
             isDragging = false;
             cardPosition = Offset.zero;
-            angle = 0;
+            angleType = AngleType.Idle;
+            angle = angleType.angle;
           });
         },
       ),
@@ -90,12 +106,12 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
 
   Widget _buildCard() {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(width: 2, color: Colors.black),
-          image: DecorationImage(
+          image: const DecorationImage(
               image: NetworkImage(
                   "https://cdn.pixabay.com/photo/2015/11/06/13/12/matrix-1027571_1280.jpg"),
               fit: BoxFit.cover),
