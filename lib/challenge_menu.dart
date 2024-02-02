@@ -7,6 +7,8 @@ import 'challenge_day_0/hard/main.dart';
 import 'challenge_day_0/normal/main.dart';
 import 'challenge_day_1/hard/main.dart';
 import 'challenge_day_1/normal/main.dart';
+import 'challenge_day_10/hard/main.dart';
+import 'challenge_day_10/normal/main.dart';
 import 'challenge_day_2/hard/main.dart';
 import 'challenge_day_2/normal/main.dart';
 import 'challenge_day_3/hard/main.dart';
@@ -64,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -86,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -152,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -174,7 +176,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -196,7 +198,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -218,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -240,7 +242,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -258,6 +260,28 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () =>
                         goScreen(context, const ChallengeHardScreenDay9()),
                     child: const Text("9일차 심화"),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () =>
+                        goScreen(context, const ChallengeNormalScreenDay10()),
+                    child: const Text("10일차 기본"),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  ElevatedButton(
+                    onPressed: () =>
+                        goScreen(context, const ChallengeHardScreenDay10()),
+                    child: const Text("10일차 심화"),
                   ),
                 ],
               ),
