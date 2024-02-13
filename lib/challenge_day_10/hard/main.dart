@@ -12,17 +12,69 @@ class ChallengeHardScreenDay10 extends StatefulWidget {
 }
 
 class _ChallengeHardScreenDay10State extends State<ChallengeHardScreenDay10> {
+  List<User> users = [];
+
+  @override
+  void initState() {
+    users.add(User());
+    users.add(User());
+    users.add(User());
+    super.initState();
+  }
+
+  void addUserCard() {
+    setState(() {
+      if (users.isNotEmpty) {
+        users.removeAt(0);
+      }
+      users.add(User());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> cardWidgets = users
+        .asMap()
+        .entries
+        .map((entry) {
+          User user = entry.value;
+
+          return DraggableCardWidget(
+            key: ObjectKey(user),
+            user: user,
+            onDragFinish: () {
+              addUserCard();
+            },
+          );
+        })
+        .toList()
+        .reversed
+        .toList();
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Swipe left and right"),
           centerTitle: true,
         ),
-        body: const DraggableCardWidget(),
+        body: Stack(
+          children: cardWidgets,
+        ),
       ),
     );
+  }
+}
+
+class User {
+  late String name;
+  late int age;
+
+  List<String> names = ['hello', 'flutter', 'world'];
+
+  User() {
+    Random ran = Random();
+    this.name = names[ran.nextInt(2)];
+    this.age = 10 + ran.nextInt(30);
   }
 }
 
@@ -47,7 +99,12 @@ enum CardState {
 }
 
 class DraggableCardWidget extends StatefulWidget {
-  const DraggableCardWidget({Key? key}) : super(key: key);
+  const DraggableCardWidget(
+      {Key? key, required this.user, required this.onDragFinish})
+      : super(key: key);
+
+  final User user;
+  final VoidCallback onDragFinish;
 
   @override
   State<DraggableCardWidget> createState() => _DraggableCardWidgetState();
@@ -60,12 +117,14 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
   double angle = 0;
   AngleType angleType = AngleType.Idle;
   CardState cardState = CardState.Idle;
+  late User user;
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       screenSize = MediaQuery.of(context).size;
     });
+    user = widget.user;
     super.initState();
   }
 
@@ -129,22 +188,22 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
               case CardState.Like:
                 {
                   cardPosition += Offset(screenSize.width * 2, 0);
-                  return;
                 }
               case CardState.SuperLike:
                 {
                   cardPosition += Offset(0, -screenSize.height * 2);
-                  return;
                 }
               case CardState.Nope:
                 {
                   cardPosition += Offset(-screenSize.width * 2, 0);
-                  return;
                 }
               default:
                 {
                   cardPosition = Offset.zero;
                 }
+            }
+            if (cardState != CardState.Idle) {
+              widget.onDragFinish.call();
             }
             cardState = CardState.Idle;
           });
@@ -187,6 +246,10 @@ class _DraggableCardWidgetState extends State<DraggableCardWidget> {
                   alignment: Alignment.bottomCenter,
                   child: _buildSticker(CardState.SuperLike),
                 ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Text(user.age.toString()),
               ),
             ],
           )),
